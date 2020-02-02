@@ -3,6 +3,9 @@ package com.example.daggerexamples.di;
 import android.app.Application;
 
 import com.example.daggerexamples.BaseApplication;
+import com.example.daggerexamples.SessionManager;
+
+import javax.inject.Singleton;
 
 import dagger.BindsInstance;
 import dagger.Component;
@@ -10,6 +13,7 @@ import dagger.android.AndroidInjector;
 import dagger.android.support.AndroidSupportInjectionModule;
 
 // Service for BaseApplication
+@Singleton
 @Component(
         modules = {
                 AndroidSupportInjectionModule.class,
@@ -19,6 +23,9 @@ import dagger.android.support.AndroidSupportInjectionModule;
         }
 )
 public interface AppComponent extends AndroidInjector<BaseApplication> {
+
+    SessionManager sessionManager();
+
     @Component.Builder
     interface Builder {
 
